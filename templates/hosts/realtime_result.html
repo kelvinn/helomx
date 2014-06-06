@@ -1,0 +1,7 @@
+{% if alert_list %}
+    {% for item in alert_list %}
+        <li class="erroritem">{{ item }}</li>
+    {% endfor %}
+{% else %}
+    <li class="successitem">There are currently no alerts.</li>
+{% endif %}

@@ -1,0 +1,102 @@
+{% extends "base-internal.html" %} {% load host_extras %}
+
+
+{% block title %}HeloMX | Dashboard{% endblock %}
+{% block content %}
+    <div id="yui-main">
+        <div class="yui-b"><div class="yui-g">
+        <div class="title">My Company Dashboard</div>
+            {% if company_form %}
+                <form action="/add/company/" method="post" name="addblogform">
+                    <div class="yui-u first">
+                        <ul class="modelform">
+                        {% if name_form %}
+                                {% if name_form.first_name.errors %}
+                                    {{ name_form.first_name.errors }}
+                                {% endif %}
+
+                                <li><label for="id_first_name">First Name:</label>{{ name_form.first_name }}</li>
+
+                                {% if name_form.last_name.errors %}
+                                    {{ name_form.last_name.errors }}
+                                {% endif %}
+
+                                <li><label for="id_last_name">Last Name:</label>{{ name_form.last_name }}</li>
+                         {% endif %}
+
+                        {% if company_form.country.errors %}
+                            {{ company_form.country.errors }}
+                        {% endif %}
+
+                        <li><label for="id_country" class="block">Country:</label>{{ company_form.country }}</li>
+
+
+                        {% if company_form.timezone.errors %}
+                            {{ company_form.timezone.errors }}
+                        {% endif %}
+
+                        <li><label for="id_timezone" class="block">Your Timezone:</label>{{ company_form.timezone }}</li>
+
+                        {% if company_form.telephone.errors %}
+                            {{ company_form.telephone.errors }}
+                        {% endif %}
+
+                        <li><label for="id_telephone" class="block">Telephone:</label>{{ company_form.telephone }}</li>
+
+                        </ul>
+                    </div>
+                    <div class="yui-u">
+                        <ul class="modelform">
+                            {% if company_form.name.errors %}
+                                {{ company_form.name.errors }}
+                            {% endif %}
+
+                            <li><label for="id_name" class="block">Your Company's Name:</label>{{ company_form.name }}</li>
+
+                            {% if company_form.street.errors %}
+                                {{ company_form.street.errors }}
+                            {% endif %}
+
+                            <li><label for="id_street" class="block">Street Address (Optional):</label>{{ company_form.street }}</li>
+
+                            {% if company_form.city.errors %}
+                                {{ company_form.city.errors }}
+                            {% endif %}
+
+                            <li><label for="id_city" class="block">City (Optional):</label>{{ company_form.city }}</li>
+
+                           {% if company_form.state.errors %}
+                                {{ company_form.state.errors }}
+                            {% endif %}
+
+                            <li><label for="id_state" class="block">State (Optional):</label>{{ company_form.state }}</li>
+
+                            {% if company_form.postcode.errors %}
+                                {{ company_form.postcode.errors }}
+                            {% endif %}
+
+                            <li><label for="id_postcode" class="block">Postcode (Optional):</label>{{ company_form.postcode }}</li>
+                        </ul>
+                        <p><input type="submit" name="submit_action" value="Create Company" /></p>
+                    </div>
+                </form>
+        {% endif %}
+        {% if engineer_form %}
+             <div class="yui-u first">
+                <form action="/add/engineer/" method="post" name="addblogform">
+                    <ul class="modelform">{{ engineer_form }}</ul>
+                    <p><input type="submit" name="submit_action" value="Create Engineerr" /></p>
+                    
+                </form>
+             </div>
+        {% endif %}
+		</div></div>
+    </div>
+
+    <div class="yui-b">
+        <div id="left-menu">
+
+        </div>
+    </div>
+{% endblock %}
+

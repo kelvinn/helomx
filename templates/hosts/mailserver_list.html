@@ -1,0 +1,12 @@
+{% load host_extras %}
+
+{% if mailserver_list %}
+    <option value="">Click to select Mailserver</option>
+    {% for item in mailserver_list %}
+        <option value="/mx/{{ item.slug }}/">{{ item.name }}</option>
+    {% endfor %}
+{% endif %}
+{% if perms.hosts.add_mailserver %}
+    <option value=""> -------------------------------- </option>
+    <option value="/add/mailserver/">Add New Mailserver</option>
+{% endif %}

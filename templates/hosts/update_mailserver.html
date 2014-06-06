@@ -1,0 +1,115 @@
+{% extends "base-internal.html" %} {% load host_extras %}
+
+{% block title %}HeloMX | Edit Server Details on {{ mx.name }}{% endblock %}
+
+
+{% block to_head %}
+    <style type="text/css">
+        #message { margin: 0px; width: 720px; height: 30px; text-align: center; vertical-align: 50%; padding-top: 10px; font-weight: bold; position: relative; }
+    </style>
+ {% endblock %}
+
+ {% block to_footer %}
+    {% include "ssi/highlightjs.html" %}
+{% endblock %}
+
+{% block content %}
+    <div id="yui-main">
+        <div class="yui-b">
+            <div class="yui-g">
+                    {% if message %}
+                        <div id="message">{{ message }}</div>
+                    {% endif %}
+                    <div class="title">Update Mailserver Details</div>
+            </div>
+            <div class="yui-g">
+
+                <form action="/update/mailserver/{{ mx.slug }}/" method="post" name="addform">
+                    <div class="yui-u first">
+                        <ul class="modelform">
+                                {% if form.name.errors %}
+                                    {{ form.name.errors }}
+                                {% endif %}
+
+                                <li><label for="id_name" class="block">Your Client's Name:</label>{{ form.name }}</li>
+
+                                {% if form.street.errors %}
+                                    {{ form.street.errors }}
+                                {% endif %}
+
+                                <li><label for="id_street" class="block">Street Address (Optional):</label>{{ form.street }}</li>
+
+                                {% if form.city.errors %}
+                                    {{ form.city.errors }}
+                                {% endif %}
+
+                                <li><label for="id_city" class="block">City (Optional):</label>{{ form.city }}</li>
+
+                                {% if form.postcode.errors %}
+                                    {{ form.postcode.errors }}
+                                {% endif %}
+
+                                <li><label for="id_postcode" class="block">Postcode (Optional):</label>{{ form.postcode }}</li>
+
+
+                                {% if form.country.errors %}
+                                    {{ form.country.errors }}
+                                {% endif %}
+
+                                <li><label for="id_country" class="block">Country (Optional):</label>{{ form.country }}</li>
+
+                        </ul>
+
+
+
+
+
+                    </div>
+                    <div class="yui-u">
+                        <ul class="modelform">
+
+                                {% if form.mx_url.errors %}
+                                    {{ form.mx_url.errors }}
+                                {% endif %}
+
+                                <li><label for="id_mx_url" class="block">Primary Domain:</label>{{ form.mx_url }}</li>
+
+                                {% if form.ipaddr.errors %}
+                                    {{ form.ipaddr.errors }}
+                                {% endif %}
+
+                                <li><label for="id_ipaddr" class="block">IP Address (Optional):</label>{{ form.ipaddr }}</li>
+
+                                {% if form.alert_contact.errors %}
+                                    {{ form.alert_contact.errors }}
+                                {% endif %}
+
+
+                                <li><label for="id_alert_contact">Alert contact:</label>{{ form.alert_contact }}</li>
+
+                               {% if threshold_form.send_email_min.errors %}
+                                    {{ threshold_form.send_email_min.errors }}
+                               {% endif %}
+
+                               <li><label for="id_send_email_min">Minutes to wait before sending email:</label>{{ threshold_form.send_email_min }}</li>
+
+                               {% if threshold_form.send_page_min.errors %}
+                                    {{ threshold_form.send_page_min.errors }}
+                               {% endif %}
+
+                               <li><label for="id_send_page_min">Minutes to wait before sending SMS:</label>{{ threshold_form.send_page_min }}</li>
+                        </ul>
+                        <p><input type="submit" name="submit_action" value="Update Mailserver" /></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="yui-b">
+        <div id="left-menu">
+            {% get_side_list user perms %}
+        </div>
+    </div>
+{% endblock %}
+

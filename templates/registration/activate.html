@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block to_footer %}
+    <script type="text/javascript">
+     $(document).ready(function($){
+       $(".rounded").corner("round 5px");
+       $(".yui-g").corner();
+     });
+    </script>
+{% endblock %}
+
+{% block title %}HeloMX | Professional Mail Server Monitoring{% endblock %}
+{% block content %}
+    <div class="yui-g">
+        <div class="yui-u first">
+            <div class="intro-space">
+            {% load humanize %}
+            <h4>Account Activation Status</h4>
+            {% if account %}
+                <p>Thanks for signing up! You can now <a href="/accounts/login/">log in</a> and start adding your mailservers!</p>
+            {% else %}
+                <p>Either your activation link was incorrect, or the activation key for your account has expired; activation keys are only
+                valid for {{ expiration_days|apnumber }} days after registration.  Please contact support, or try registering again.</p>
+            {% endif %}
+            </div>
+        </div>
+        <div class="yui-u">
+            <div class="intro-space">
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

@@ -1,0 +1,66 @@
+{% extends "base-internal.html" %} {% load host_extras %}
+
+{% block title %}HeloMX | Create Support Ticket{% endblock %}
+{% block to_head %}
+    <style type="text/css">
+        #message { margin: 0px; width: 720px; height: 30px; text-align: center; vertical-align: 50%; padding-top: 10px; font-weight: bold; position: relative; }
+    </style>
+{% endblock %}
+
+{% block to_footer %}
+    {% include "ssi/highlightjs.html" %}
+{% endblock %}
+
+{% block content %}
+
+    <div id="yui-main">
+        <div class="yui-b">
+            <div class="yui-g">
+                <div class="title">Create Support Ticket</div>
+                {% if message %}
+                    <div id="message">{{ message }}</div>
+                {% endif %}
+            </div>
+            <div class="yui-g">
+                
+                <div class="yui-u first">
+                    {% if faq_list %}
+                        {% autoescape off %}
+                            <div class="faq">
+                            {% for faq in faq_list %}
+                                <div class="faqtitle"><i>{{ faq.title }}</i></div>
+                                <div class="faqcontent" id="{{ faq.slug }}">{{ faq.content }}</div>
+                            {% endfor %}
+                                <a href="/answers/">View All Answers</a>
+                            </div>
+                        {% endautoescape %}
+                    {% endif %}
+                </div>
+                <div class="yui-u">
+                    {% if ticket_data %}
+                        Ticket ID: <b>{{ ticket_data.ticket_id }}</b><br />
+                        Name Submitted: <b>{{ ticket_data.name }}</b><br />
+                        Preferred Contact Method: <b>{{ ticket_data.contact_method|capfirst }}</b><br />
+                        Ticket Contend: <b>{{ ticket_data.content }}</b><br />
+                    {% else %}
+                        <form action="/add/ticket/" method="post" name="addform">
+                            <ul class="modelform">
+                                {{ ticket_form }}
+                            </ul>
+                            <p><input type="submit" name="submit_action" value="Submit Ticket" /></p>
+                        </form>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="yui-b">
+        <div id="left-menu">
+            {% get_side_list user perms %}
+        </div>
+    </div>
+
+
+{% endblock %}
+

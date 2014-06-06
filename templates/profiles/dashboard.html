@@ -1,0 +1,123 @@
+{% extends "base-internal.html" %}
+{% load host_extras %}
+
+{% block title %}HeloMX | Dashboard{% endblock %}
+
+{% block to_head %}
+       <style type="text/css">
+        #message { margin: 0px; width: 720px; height: 30px; text-align: center; vertical-align: 50%; padding-top: 10px; font-weight: bold; position: relative; }
+    </style>
+{% endblock %}
+
+{% block to_footer %}
+    {% include "ssi/highlightjs.html" %}
+    <script type="text/javascript">
+        $(document).ready(function()
+        {
+           // Notice the use of the each() method to acquire access to each elements attributes
+           $('#bd li[tooltip]').each(function()
+           {
+              $(this).qtip({
+                 content: $(this).attr('tooltip'), // Use the tooltip attribute of the element for the content
+                   style: {
+                      tip: 'rightMiddle' // Notice the corner value is identical to the previously mentioned positioning corners
+                   },
+                   position: {
+                      corner: {
+                         target: 'leftMiddle',
+                         tooltip: 'rightMiddle'
+                      }
+                   }
+
+              });
+           });
+        });
+    </script>
+{% endblock %}
+{% block content %}
+    <div id="yui-main">
+        <div class="yui-b">
+            <div class="yui-g">
+                {% if message %}
+                    <div id="message">{{ message }}</div>
+                {% endif %}
+                <div class="title">Mailserver Incidents In {% now "F" %}</div>
+                <br />
+                    {% load charts %}
+                    {% chart Line dataset_hist %}
+                        {% color 008000 %}
+                        {% scale 0 max_daily_incidents %}
+                        {% line 3 %}
+                        {% size 700 200  %}
+                        {% marker o 96513c 0 -1 5 %}
+                        {% axes type xy  %}
+                        {% axes label 0 d_range  %}
+                        {% axes label 1 None max_daily_incidents %}
+                    {% endchart %}
+            </div>
+            <div class="yui-gb">
+                <div class="yui-u first">
+                    <div class="title">Current Outage Status</div>
+                    {% load charts %}
+                    {% chart Pie dataset_availability  %}
+                        {% color a8c9aa 96513c %}
+                        {% legend Available Unavailable %}
+                        {% legend_pos b  %}
+                        {% size 200 200  %}
+                    {% endchart %}
+                    </div>
+                <div class="yui-u">
+                    <div class="title">Current Blacklist Status</div>
+                    {% load charts %}
+                    {% chart Pie dataset_blacklist  %}
+                        {% color 96513c a8c9aa %}
+                        {% legend Blacklisted Clear %}
+                        {% legend_pos b  %}
+                        {% size 200 200  %}
+                    {% endchart %}
+      	            </div>
+                <div class="yui-u">
+                    <div class="title">Current Incidents</div>
+                    {% if open_incidents %}
+                        {% for incident in open_incidents %}
+                                <li class="item" tooltip="{{ incident.add_time|date:"jS F Y H:i:s" }}">{% if incident.rbl %}<b>DNSBL</b> {% else %}<b>Down </b>{% endif %} <a href="{{incident.mailserver.get_absolute_url }}">{{ incident.mailserver.name }}</a> at {{ incident.add_time|date:"P" }}</li>
+                        {% endfor %}
+                    {% else %}
+                        There are no open incidents.
+                    {% endif %}
+                </div>
+                <br />
+            </div>
+            <div class="yui-gc">
+                <div class="yui-u first">
+                    <div class="title">Mailserver Overview</div>
+                    <ul>
+                        {% for mailserver in mailserver_list %}
+                            <li class="item">{% if mailserver.mailserverstatus_set.get.has_incident %}<img src="https://www.helomx.com/img/caution.png" alt="Incident Detected" /> {% else %} <img src="https://www.helomx.com/img/noerr.png" alt="OK" /> {% endif %}<a href="{{ mailserver.get_absolute_url }}">{{ mailserver.name }}</a> {% if perms.hosts.delete_mailserver %} <a href="/delete/mailserver/{{ mailserver.slug }}/"><img src="/img/delete.png" alt="Delete" class="icon" /></a>{% endif %}{% if perms.hosts.change_mailserver %} <a href="/update/mailserver/{{ mailserver.slug }}/"><img src="/img/config.png" alt="Update" class="icon" /></a>{% endif %}  {% if mailserver.is_trial %}({{ mailserver.get_free_days }} Trial Days Remaining){% endif %}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="yui-u">
+                    <div class="title">Company Information</div>
+                    <ul>
+                        <li class="item">Remaining Balance: <b>${{ company.credit_set.get.credit_left }}</b></li>
+                        <li class="item">Daily Credit Cost: <b>${{ daily_cost }}</b></li>
+                    </ul>
+      	        </div>
+                <div class="yui-u">
+                    <!-- emtpy unit for now -->
+                </div>
+                <br />
+            </div>
+        </div>
+
+    </div>
+
+    <div class="yui-b">
+        <div id="left-menu">
+            {% get_side_list user perms %}
+        </div>
+    </div>
+
+{% endblock %}
+

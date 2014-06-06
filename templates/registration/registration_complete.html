@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block to_footer %}
+    <script type="text/javascript">
+     $(document).ready(function($){
+       $(".rounded").corner("round 5px");
+       $(".yui-g").corner();
+     });
+    </script>
+{% endblock %}
+
+{% block title %}HeloMX | Professional Mail Server Monitoring{% endblock %}
+{% block content %}
+        <div class="yui-g">
+            <div class="yui-u first">
+                <div class="intro-space">
+                    <h4>Registration Status</h4>
+                    <p>Your account has been created.  You should receive an email shortly with an activation link.  After your email address has been verified you will be able to log in and start using HeloMX!</p>
+                </div>
+            </div>
+            <div class="yui-u">
+                <div class="intro-space">
+
+                </div>
+            </div>
+        </div>
+{% endblock %}

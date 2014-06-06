@@ -1,0 +1,51 @@
+{% extends "base-internal.html" %} {% load host_extras %}
+
+{% block title %}HeloMX | Recently Answered Questions{% endblock %}
+{% block to_head %}
+    <style type="text/css">
+        #message { margin: 0px; width: 720px; height: 30px; text-align: center; vertical-align: 50%; padding-top: 10px; font-weight: bold; position: relative; }
+    </style>
+{% endblock %}
+
+{% block to_footer %}
+    {% include "ssi/highlightjs.html" %}
+{% endblock %}
+
+{% block content %}
+    <div id="yui-main">
+        <div class="yui-b">
+            <div class="yui-g">
+                <div class="title">Recently Answered Questions</div>
+                {% if message %}
+                    <div id="message">{{ message }}</div>
+                {% endif %}
+            </div>
+            <div class="yui-g">
+                {% if object_list %}{% autoescape off %}
+                    <div class="faq">
+                    {% for faq in object_list %}
+                        <div class="faqtitle">{{ forloop.counter }}) <a href="#{{ faq.slug }}">{{ faq.title }}</a></div>
+                    {% endfor %}
+                    </div>
+                    <div class="faq">
+                    {% for faq in object_list %}
+                        <div class="faqtitle"><i>{{ faq.title }}</i></div>
+                        <div class="faqcontent" id="{{ faq.slug }}">{{ faq.content }}</div>
+                    {% endfor %}
+                    </div>
+                {% endautoescape %}
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+
+    <div class="yui-b">
+        <div id="left-menu">
+            {% get_side_list user perms %}
+        </div>
+    </div>
+
+
+{% endblock %}
+

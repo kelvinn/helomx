@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+{% block to_head %}
+    <link rel="stylesheet" type="text/css" href="/css/slideshow.css" />
+    <meta name="google-site-verification" content="BjQcpvBJRXjUIBV2MSQlbkJRkSd5_dgeHdCvhwvlFA4" />
+    <meta name="msvalidate.01" content="1AEA532508B0ED2262916D7603C8634F" />
+{% endblock %}
+{% block to_footer %}
+    <script type="text/javascript" src="/js/jquery.corner.js"></script>
+    <script type="text/javascript">
+     $(document).ready(function($){
+       $(".rounded").corner("round 5px");
+       $(".yui-gb").corner();
+       $(".yui-gc").corner();
+       $(".yui-gd").corner();
+       $(".yui-ge").corner();
+     });
+    </script>
+    <script type="text/javascript" src="/js/slideshow.js"></script>
+    <script type="text/javascript">
+            $('slideshow').style.display='none';
+            $('wrapper').style.display='block';
+            var slideshow=new TINY.slideshow("slideshow");
+            window.onload=function(){
+                    slideshow.auto=false;
+                    slideshow.speed=1;
+                    slideshow.link="linkhover";
+                    slideshow.info="information";
+                    slideshow.thumbs="";
+                    slideshow.left="slideleft";
+                    slideshow.right="slideright";
+                    slideshow.scrollSpeed=2;
+                    slideshow.spacing=5;
+                    slideshow.active="#fff";
+                    slideshow.init("slideshow","image","imgprev","imgnext","imglink");
+            }
+    </script>
+
+{% endblock %}
+
+
+{% block title %}HeloMX | Professional Mail Server Monitoring{% endblock %}
+
+
+
+{% block content %}
+    <div class="yui-gc">
+            <div class="yui-u first">
+                <img src="/img/simplified.png" alt="Simple." />
+            </div>
+        <div class="yui-u">
+             <ul id="roundeddivs">
+                 <li><a href="https://www.helomx.com/accounts/register/" class="rounded">Register For Free</a></li>
+                 <li><a href="https://www.helomx.com/tour/" class="rounded">Take A Live Demo</a></li>
+                 <li><a href="https://www.helomx.com/contact/" class="rounded">Ask Us A Question</a></li>
+             </ul>
+        </div>
+    </div>
+        <div class="yui-ge">
+
+            <div class="yui-u first">
+                 <div class="intro-space">
+                    <ul id="slideshow">
+                        <li>
+                                <h3>Quick Mailserver Overview</h3>
+                                <span>/img/mailserver_overview.png</span>
+                                <p>Get a quick and fast overview of how your clients are doing.  Red is bad, green is good.</p>
+                        </li>
+                        <li>
+                                <h3>Sub-minute Monitoring</h3>
+                                <span>/img/subminute_monitoring.png</span>
+                                <p>Some places charge based on monitoring frequency.  To us, this isn't acceptable; we believe any monitoring over a few minutes is not a value added service.  We perform a check of your mailserver every minute from one of the probes in our distributed network.  If the probe detects your client's server as being down a broadcast alert is sent on the wire.  We perform blacklist checks every 60 seconds.</p>
+                        </li>
+                        <li>
+                                <h3>Timezone Aware Alerting</h3>
+                                <span>/img/blackout_periods.png</span>
+                                <p>Don't want to receive SMS' at 3am?  No problem, we've got you covered.</p>
+                        </li>
+                        <li>
+                                <h3>Unlimited Mailservers</h3>
+                                <span>/img/multiple_mailservers.png</span>
+                                <p>Want to add 100 mailservers?  No problem.</p>
+                        </li>
+                        <li>
+                                <h3>Real-Time Dashboard</h3>
+                                <span>/img/realtime_alerts.png</span>
+                                <p>If your business has a dedicated remote support engineer, they'll love our Real-Time Dashboard.  Toss it up on a spare LCD, and know straight away when a client gets disconnected.</p>
+                        </li>
+                        <li>
+                                <h3>Build for Teams</h3>
+                                <span>/img/forit_teams.png</span>
+                                <p>Designed from the ground up for IT teams, specifically teams with the responsibility of many clients.  Through the use of individual engineer credentials, you can assign engineers on a per-client basis.</p>
+                        </li>
+                        <li>
+                                <h3>Role-Based ACLs</h3>
+                                <span>/img/multiple_privs.png</span>
+                                <p>Because we encourage each engineer to have an account, we've built in permissions.  An engineer can be granted access to billing, editing of client details, and editing of other engineer details.</p>
+                        </li>
+
+                    </ul>
+                    <div id="wrapper">
+                        <div id="fullsize">
+                                <div id="imgprev" class="imgnav" title="Previous Image"></div>
+                                <div id="imglink"></div>
+                                <div id="imgnext" class="imgnav" title="Next Image"></div>
+                                <div id="image"></div>
+                                <div id="information">
+                                        <h3></h3>
+                                        <p></p>
+                                </div>
+                        </div>
+                    </div>
+                 </div>
+            </div>
+            <div class="yui-u">
+                <img src="/img/features.png" alt="Features" />
+            </div>
+        </div>
+
+
+        <div class="yui-gb">
+            <div class="yui-u first">
+                <div class="intro-space">
+                    <h4>Free Diagnostic Check</h4>
+                    <form action="/diagnostics/" method="post">
+                        <ul>
+                            {{ form.as_ul }}
+                        </ul>
+                        <div class="button"><input type="submit" id="submit_btn" value="Free Diagnostic" /></div>
+                    </form>
+                </div>
+            </div>
+            <div class="yui-u">
+                <h4>Diagnostic Checks Per Hour</h4>
+                    <img src="/img/usergraph.png" alt="Demo" />
+            </div>
+        </div>
+    <br />
+{% endblock %}
+

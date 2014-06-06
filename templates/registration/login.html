@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load host_extras %}
+
+{% block to_footer %}
+    <script type="text/javascript">
+     $(document).ready(function($){
+       $(".rounded").corner("round 5px");
+       $(".yui-gc").corner();
+     });
+    </script>
+{% endblock %}
+
+{% block title %}HeloMX | Professional Mail Server Monitoring{% endblock %}
+{% block content %}
+    <div class="yui-gc">
+        <div class="yui-u first">
+            <div class="intro-space">
+                 <h4>HeloMX's Message of the Day</h4>
+                 <br />
+                 {% autoescape off %}
+                    {% get_motd 5 %}
+                 {% endautoescape %}
+            </div>
+        </div>
+        <div class="yui-u">
+            <div class="intro-space">
+                <h4>Account Login</h4>
+                <form method="post" action="">{% csrf_token %}
+
+                <ul class="modelform">
+                    <li><label for="id_username">Username:</label>{% if form.username.errors %} <ul class="errorlist"><li>{{ form.username.errors|join:", " }}</li></ul>{% endif %}
+                    {{ form.username }}</li>
+                    <li><label for="id_password">Password:</label>{% if form.password.errors %} <ul class="errorlist"><li>{{ form.password.errors|join:", " }}</li></ul>{% endif %}
+                    {{ form.password }}</li>
+                </ul>
+                <div class="button"><input type="submit" name="submit_action" value="Login" /></div>
+                </form>
+                <br />
+                <a href="/accounts/password/reset/">Forgot password?</a>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+

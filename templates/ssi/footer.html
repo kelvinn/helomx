@@ -1,0 +1,34 @@
+{% load host_extras %}
+<div id="doc2" class="yui-t7">
+    <div class="yui-b">
+        <div class="yui-gb">
+            <div class="yui-u first">
+                <div class="itemheader">Recently Answered Questions</div>
+                <ul class="itemlist">
+                    {% get_faq 4 %}
+                    <li><a href="/answers/">View All Answers</a></li>
+                </ul>
+            </div>
+            <div class="yui-u">
+                <div class="itemheader">Additional Tasks</div>
+                <ul class="itemlist">
+                    {% ifnotequal user.username "demo" %}
+                        <li><a href="/update/engineer/{{ user.username }}/">Edit Your Profile</a></li>
+                        <li><a href="/accounts/password/change/">Change Password</a></li>
+                    {% else %}
+                        <li>Edit Your Profile (Disabled)</li>
+                        <li>Change Password (Disabled)</li>
+                    {% endifnotequal %}
+                    {% if perms.billing.add_invoicehistory %} <li><a href="/invoices/">Add Funds</a></li>{% endif %}
+                    <li><a href="/add/ticket/">New Support Ticket</a></li>
+                </ul>
+            </div>
+            <div class="yui-u">
+                <div class="itemheader">Monitoring Network Status</div>
+                <ul class="itemlist">
+                    {% get_probe_status %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+import pymongo
+from pymongo import Connection
+connection = Connection()
+db = connection.test_database
+collection = db.test_collection
+
+from random import randrange
+x = randrange(175,222)
+new_posts = []
+new_posts.append({"":x, "tags":["bulk", "insert"]})
+
+for i in xrange(1,100000):
+    x = randrange(175,222)
+    new_posts.append({"":x})
+
+collection.insert(new_posts)
+
+ll = []
+for item in collection.find(): ll.append(item[""])

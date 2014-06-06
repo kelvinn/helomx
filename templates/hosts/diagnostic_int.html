@@ -1,0 +1,109 @@
+{% extends "base-internal.html" %}
+
+{% block to_footer %}
+    <script type="text/javascript">
+    $(function() {
+      $(".button").click(function() {
+        // validate and process form here
+      });
+    });
+
+  $(function() {
+    $('.errorlist').hide();
+    $(".button").click(function() {
+      // validate and process form here
+
+      $('.error').hide();
+  	  var id_domain = $("input#id_domain").val();
+      if (id_domain == "") {
+        $("label#id_domain_error").show();
+        $("input#id_domain").focus();
+        return false;
+      }
+
+
+    });
+  });
+
+
+  
+    </script>
+
+	<script type="text/javascript">
+
+        {% if pick_mx %}
+            $(document).ready(function () {
+                $('#spinner').show('fast');
+                $.get("/diag_html/", { mx: "{{ pick_mx|first|first }}", tld: "{{ tld }}"},
+                  function(data){
+                    $("#mx-update").html(data);
+                    $('#spinner').hide('fast');
+                  });
+            });
+        {% endif %}
+
+		function loadContent(mx) {
+            $('#spinner').show('fast');
+            $.get("/diag_html/", { mx: mx, tld: "{{ tld }}"},
+              function(data){
+                $("#mx-update").html(data);
+                $('#spinner').hide('fast');
+   
+              });
+       		}
+	</script>
+
+{% endblock %}
+
+
+{% block title %}HeloMX | Professional Mail Server Monitoring{% endblock %}
+
+
+
+{% block content %}
+    <div id="widewhite">
+        <div class="yui-gb">
+            <div class="yui-u first">
+                <div class="triple-container">
+                    <h4>Free Diagnostics</h4>
+                    <form name="diagnostic" action="" method="post">
+                        <ul>
+                        <label class="errorlist" for="id_domain" id="id_domain_error">This field is required.</label>
+                        {{ diagnostic_form }}
+                        </ul>
+                        <br />
+                    <input type="submit" name="submit" class="button" id="submit_btn" value="Lookup" />
+
+                    </form>
+                </div>
+                <div class="triple-container">
+                    <ul>
+                        {% if pick_mx %}
+                            <h4>Detected MX Records</h4>
+                        {% endif %}
+                        {% for item in pick_mx %}
+                            <li><a href="javascript:loadContent('{{ item|first }}');"> {{ item|first }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            {% if pick_mx %}
+                <h4>Diagnostic Result</h4>
+            {% endif %}
+            {% if not pick_mx %}
+                <div class="yui-u ">
+                        <div class="diag-red"><p>Type in your client's domain, for example, <i>hardwarestore.com</i></p><br /><p>We will automatically detect the MX records.</p></div>
+                </div>
+            {% else %}
+             <div id="spinner" style="display:none"><img src="/img/ajax-loader.gif" /></div>
+             <div id="mx-update"></div>
+            <!-- jquery DIVs insert here -->
+
+            {% endif %}
+
+
+        </div>
+    </div>
+
+{% endblock %}
+

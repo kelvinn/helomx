@@ -1,0 +1,154 @@
+{% extends "base-internal.html" %} {% load host_extras %}
+{% block to_head %}
+    <style type="text/css">
+        #message { margin: 0px; width: 720px; height: 30px; text-align: center; vertical-align: 50%; padding-top: 10px; font-weight: bold; position: relative; }
+    </style>
+{% endblock %}
+
+{% block to_footer %}
+    {% include "ssi/highlightjs.html" %}
+    <script type="text/javascript" src="/js/jquery.qtip-1.0.0.min.js"></script>
+    <script type="text/javascript">
+        function loadUpdate() {
+          $.getJSON("/status_json/", { id:"{{ mx.slug }}" },
+            function(json){
+            $.each(json,function(i,item) {
+                if (item.fields.check_type == "blacklist") {
+                    $("#blk_update").html(item.fields.check_time);
+                }
+                if (item.fields.check_type == "port") {
+                    $("#port_update").html(item.fields.check_time);
+                }
+                if (item.fields.check_type == "misc") {
+                    $("#misc_update").html(item.fields.check_time);
+                }
+            });
+          });
+          window.setTimeout(loadUpdate, 10000);
+        }
+        $(document).ready(loadUpdate);
+        $(document).ready(function()
+        {
+           // Notice the use of the each() method to acquire access to each elements attributes
+           $('#bd li[tooltip]').each(function()
+           {
+              $(this).qtip({
+                 content: $(this).attr('tooltip'), // Use the tooltip attribute of the element for the content
+                   style: {
+                      tip: 'rightMiddle' // Notice the corner value is identical to the previously mentioned positioning corners
+                   },
+                   position: {
+                      corner: {
+                         target: 'leftMiddle',
+                         tooltip: 'rightMiddle'
+                      }
+                   }
+
+              });
+           });
+        });
+
+
+
+    </script>
+{% endblock %}
+{% block title %}HeloMX | Server Details on {{ mx.name }}{% endblock %}
+{% block content %}
+
+<div id="yui-main">
+    <div class="yui-b">
+        <div class="yui-g">
+            {% if message %}
+                <div id="message">{{ message }}</div>
+            {% endif %}
+            <div class="title">{{ mx.name }} RTT History</div>
+            <div id="rttimages">
+                <img src="/charting/{{ mx.slug }}/?range={{ disp_range }}" alt=""/>
+            </div>
+        </div>
+        <div class="yui-g">
+            Filter: <a href="/mx/{{ mx.slug }}/">This Hour</a> | <a href="/mx/{{ mx.slug }}/?range=daily">Past 24hr</a> | <a href="/mx/{{ mx.slug }}/?range=weekly">Past Week</a> | <a href="/mx/{{ mx.slug }}/?range=monthly">Past Month</a><br />
+        </div>
+        <div class="yui-gb">
+            <div class="yui-u first">
+                <div class="title">Blacklist Status</div>
+                    <span class="checked">Last check at <span id="blk_update"></span></span>
+                    <br /><br />
+                    {% for status in blacklist_status %}
+                        {{ status.rbl.name }} - <b>{{ status.status|capfirst }}</b><br />
+                    {% endfor %}
+                    <br /><br />
+                </div>
+            <div class="yui-u">
+                <div class="title">Blacklist History</div>
+                {% if blacklist_history %}
+                    {% for bl in blacklist_history|slice:":5" %}
+                        {% if bl.close_time %}
+                             <li class="item" tooltip="{{ bl.rbl.name }}"><img src="https://www.helomx.com/img/up.png" alt="Up" class="icon" /> {{ bl.close_time|date:"jS F Y H:i:s" }}</li>
+                             <li class="item" tooltip="{{ bl.rbl.name }}"><img src="https://www.helomx.com/img/down.png" alt="Down" class="icon" /> {{ bl.add_time|date:"jS F Y H:i:s" }}</li>
+                             <br />
+                        {% else %}
+                            <li class="item" tooltip="{{ bl.rbl.name }}"><img src="https://www.helomx.com/img/down.png" alt="Down" class="icon" /> {{ bl.add_time|date:"jS F Y H:i:s" }}</li>
+                            <br />
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+                {% if not blacklist_history %}
+                   This IP never been blacklisted.
+                {% endif %}
+                </div>
+            <div class="yui-u">
+                <div class="title">Availability History</div>
+                <span class="checked">Last check at <span id="port_update"></span></span>
+                <br /><br />
+                {% if avail_history %}
+                    <ul>
+                    {% for av in avail_history|slice:":5" %}
+                        {% if av.close_time %}
+                             <li class="item"><img src="https://www.helomx.com/img/up.png" alt="Up" class="icon" /> {{ av.close_time|date:"jS F Y H:i:s" }}</li>
+                             <li class="item"><img src="https://www.helomx.com/img/down.png" alt="Down" class="icon" /> {{ av.add_time|date:"jS F Y H:i:s" }}</li>
+                        {% else %}
+                            <li class="item"><img src="https://www.helomx.com/img/down.png" alt="Down" class="icon" /> {{ av.add_time|date:"jS F Y H:i:s" }}</li>
+                        {% endif %}
+                            <br />
+                    {% endfor %}
+                    </ul>
+                {% else %}
+                    This server has never been down.
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="yui-gb">
+            <div class="yui-u first">
+                <div class="title">Misc Checks</div>
+                    <span class="checked">Last check at <span id="misc_update"></span></span>
+                    <br /><br />
+                    <ul>
+                        <li>Availability: <b>{{ avail_result|capfirst }}</b>
+                        <li>Relaying Allowed: <b>{{ relay_result|capfirst }}</b></li>
+                        <li>Multiple MX Servers: <b>{{ redund_result|capfirst }}</b></li>
+                        <li>Backup MX Alive: <b>{{ backupmxport_result|capfirst }}</b></li>
+                        <li>Reverse DNS: <b>{{ revdns_result|capfirst }}</b></li>
+                        <li>MX Health Score: <b>{{ diag_score }}</b></li>
+                    </ul>
+                </div>
+            <div class="yui-u">
+
+            </div>
+            <div class="yui-u">
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+    <div class="yui-b">
+        <div id="left-menu">
+            {% get_side_list user perms %}
+        </div>
+    </div>
+{% endblock %}
+

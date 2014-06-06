@@ -1,0 +1,43 @@
+import boto
+sdb = boto.connect_sdb('', '')
+
+
+item = domain.new_item('airline-three')
+
+from datetime import datetime, timedelta
+from random import randrange
+
+       
+
+item = domain.new_item(item_name)
+
+f_start = datetime.now()
+f_time =  f_start-timedelta(days=30)
+
+while f_time < f_start:
+    f_time = f_time + timedelta(days=1)
+    item_name = f_time.isoformat() + "airline-three"
+    item = domain.new_item(item_name)
+    for i in xrange(1,31):
+        item[str(i)] = randrange(56, 59)
+    item.save()
+    
+domain = sdb.create_domain('helomx_test_3')
+
+
+item_name = date.today().isoformat() + "airline-three"
+item[item_name] = ['(1, 4)) one', 'two', 'three']
+
+item = domain.new_item('airline-three')
+for i in xrange(2,31):
+    for p in xrange(2, 24):
+        item.add_value(i, str((p, randrange(44, 48))))
+
+
+l = []
+for x in xrange(1, 24):
+    l.append((x, randrange(44, 48)))
+    
+        
+    print l
+

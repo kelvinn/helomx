@@ -1,0 +1,35 @@
+
+
+<div class="yui-u">
+    {% if rbl_result %}
+        <div class="triple-container">
+            <div class="title">Blacklist Check</div>
+            <ul>
+            {% for rbl_obj in rbl_result %}
+                <li>{{ rbl_obj.name }} - {% ifequal rbl_obj.status "Blacklisted" %} <b><a href="{{ rbl_obj.remediation_url }}">{{ rbl_obj.status }}</a></b> {% else %} <b>{{ rbl_obj.status }}</b> {% endifequal %}</li>
+            {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+    {% if diag_score %}
+        <div class="triple-container">
+            <div class="title">Diagnostic Result</div>
+            MX Health Score: <b>{{ diag_score }}</b>
+        </div>
+    {% endif %}
+</div>
+<div class="yui-u">
+    {% if avail_result %}
+        <div class="triple-container">
+            <div class="title">Configuration Diagnostics</div>
+            <ul>
+                <li>Round Trip Time (RTT): <b>{{ avail_result|capfirst }}</b>
+                <li>Relaying Allowed: <b>{{ relay_result|capfirst }}</b></li>
+                <li>Multiple MX Servers: <b>{{ redund_result|capfirst }}</b></li>
+                <li>Reverse DNS: <b>{{ revdns_result|capfirst }}</b></li>
+            </ul>
+
+        </div>
+    {% endif %}
+</div>
+           

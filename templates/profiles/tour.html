@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load host_extras %}
+
+{% block to_footer %}
+    <script type="text/javascript">
+     $(document).ready(function($){
+       $(".rounded").corner("round 5px");
+       $(".yui-gc").corner();
+     });
+    </script>
+{% endblock %}
+
+{% block title %}HeloMX | Professional Mail Server Monitoring{% endblock %}
+{% block content %}
+    <div class="yui-gc">
+        <div class="yui-u first">
+            <div class="intro-space">
+                <h4>About Our Live Demo</h4>
+                <p>HeloMX has been designed for IT teams, and thus has a role-based
+                    authentication system.  There are three types of accounts:
+                    logins that can edit mailserver, logins that can edit billing,
+                and basic logins that have read-only access.</p><br />
+                <p>This <b>demo</b> account is a basic login.</p><br />
+                <p>If you see HeloMX as a possibility for your toolbox after
+                exploring the demo, we encourage you to create an account.  Our
+                only requirement is a valid email address.  Enjoy!</p>
+            </div>
+        </div>
+        <div class="yui-u">
+            <div class="intro-space">
+                <h4>Demo Account Login</h4>
+                <form method="post" action="/accounts/login/?next=/dashboard/">
+                <ul class="modelform">
+                    <li><label for="id_username">Username:</label>
+                    <input id="id_username" type="text" name="username" maxlength="30" value="demo"/></li>
+                    <li><label for="id_password">Password:</label>
+                    <input type="password" name="password" id="id_password" value="demo"/></li>
+                </ul>
+                <div class="button"><input type="submit" name="submit_action" value="Login" /></div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

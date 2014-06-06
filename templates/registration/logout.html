@@ -1,0 +1,30 @@
+{% extends "base-internal.html" %} {% load host_extras %}
+
+{% block title %}HeloMX | Ciao.{% endblock %}
+{% block content %}
+    <div id="yui-main">
+        <div class="yui-b"><div class="yui-g">
+        <div class="title">Welcome to HeloMX, please login.</div>
+            <p>Not a member yet? <a href="/accounts/register/">Join already</a>!</p>
+            <form method="post" action="">
+                <label for="id_username">Username:</label>{% if form.username.errors %} {{ form.username.errors|join:", " }}<br />{% endif %}
+                {{ form.username }}
+                <label for="id_password">Password:</label>{% if form.password.errors %} {{ form.password.errors|join:", " }}{% endif %}
+                {{ form.password }}
+                <br /><br />
+                <input type="image" src="http://media.blogmozaic.com/images/loginsm.png" name="submit" value="Log in" />
+            </form>
+            <p><a href="/accounts/reset/">Forgot password?</a></p>
+        </div></div>
+    </div>
+
+    <div class="yui-b">
+        <div id="left-menu">
+            <div class="title">My Profile</div>
+            <ul>
+                <li class="item">Not logged in</li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+

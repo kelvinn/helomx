@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load host_extras %}
+
+{% block to_footer %}
+    <script type="text/javascript">
+     $(document).ready(function($){
+       $(".rounded").corner("round 5px");
+       $(".yui-gc").corner();
+     });
+    </script>
+{% endblock %}
+
+{% block title %}HeloMX | Professional Mail Server Monitoring{% endblock %}
+{% block content %}
+    <div class="yui-gc">
+        <div class="yui-u first">
+            <div class="intro-space">
+                 <h4>An SLA That Matters</h4>
+                 <p>We believe uptime matters.  That's why
+                     we're promising you an SLA that actually matters: if one of your mailservers goes offline and we fail to detect it,
+                     we'll give you a month free credit for that client.  Simply create a support ticket with the clients's name and time of fault,
+                     and before you know it you'll have 30 free days worth of credit.</p><br />
+                 
+                 <p>In order to achieve this SLA, HeloMX was built using a robust monitoring network with self-healing capabilities. Although
+                     accidents can happen, we're confident enough in our design to offer you 30 free days if HeloMX fails to detect an outage.</p>
+
+            </div>
+        </div>
+        <div class="yui-u">
+            <div class="intro-space">
+                <h4>Account Registration</h4>
+                <form method="post" action="">
+                    <ul class="modelform">{{ form.as_ul }}</ul>
+                    <div class="button"><input type="submit" name="submit_action" value="Register" /></div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

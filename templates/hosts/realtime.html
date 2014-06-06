@@ -1,0 +1,29 @@
+{% extends "base-fullscreen.html" %}
+{% block to_footer %}
+    {% include "ssi/highlightjs.html" %}
+    <script type="text/javascript">
+      function checkAlerts() {
+        $.get("/realtime_html/",
+          function(data){
+            $("#realtimeresults").html(data);
+          });
+          window.setTimeout(checkAlerts, 10000);
+      }
+
+      $(document).ready(function(){
+          checkAlerts();
+      });
+    </script>
+{% endblock %}
+
+{% block title %}HeloMX | Server Details on {{ mx.name }}{% endblock %}
+{% block content %}
+
+    <div id="realtime">
+        <ul>
+            <div id="realtimeresults"></div>
+        </ul>
+    </div>
+
+{% endblock %}
+

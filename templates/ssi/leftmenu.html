@@ -1,0 +1,19 @@
+{% load host_extras %}
+{% if perms.profiles.change_company %}
+<div class="title">My Company</div>
+<ul>
+    <li class="item"><a href="/update/company/">Edit Company</a></li>
+    {% get_side_engr_list user %}
+    <li class="item"><a href="/add/engineer/">Add Engineer</a></li>
+
+</ul><br />
+
+{% endif %}
+
+<div class="title">Administrative Tasks</div>
+<ul>
+    {% if perms.hosts.add_mailserver %}<li><a href="/add/mailserver">Add Mailserver</a></li>{% endif %}
+    {% if perms.profiles.change_company %}<li><a href="/update/company/">Edit Company</a></li>
+        <li><a href="/add/engineer/">Add Engineer</a></li>{% endif %}
+    {% if perms.billing.add_invoicehistory %} <li><a href="/invoices/">Add Funds</a></li>{% endif %}
+</ul><br />

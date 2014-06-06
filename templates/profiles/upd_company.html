@@ -1,0 +1,73 @@
+{% extends "base-internal.html" %} {% load host_extras %}
+
+{% block title %}HeloMX | Edit Client Profile{% endblock %}
+{% block to_head %}
+    <style type="text/css">
+        #message { margin: 0px; width: 720px; height: 30px; text-align: center; vertical-align: 50%; padding-top: 10px; font-weight: bold; position: relative; }
+    </style>
+{% endblock %}
+
+{% block to_footer %}
+    {% include "ssi/highlightjs.html" %}
+{% endblock %}
+
+{% block content %}
+    <div id="yui-main">
+        <div class="yui-b"><div class="yui-g">
+        {% if message %}
+            <div id="message">{{ message }}</div>
+        {% endif %}
+        <div class="title">Company Profile</div>
+        <form action="/update/company/" method="post" name="addblogform">
+        <div class="yui-u first">
+
+                <ul class="modelform">
+
+                    {% if company_form.name.errors %}
+                        {{ company_form.name.errors }}
+                    {% endif %}
+
+                    <li><label for="id_name" class="block">Your Company's Name:</label>{{ company_form.name }}</li>
+
+                    {% if company_form.street.errors %}
+                        {{ company_form.street.errors }}
+                    {% endif %}
+
+                    <li><label for="id_street" class="block">Street Address (Optional):</label>{{ company_form.street }}</li>
+
+                  </ul>
+        </div>
+        <div class="yui-u">
+            <ul class="modelform">
+                {% if company_form.city.errors %}
+                    {{ company_form.city.errors }}
+                {% endif %}
+
+                <li><label for="id_city" class="block">City (Optional):</label>{{ company_form.city }}</li>
+
+                {% if company_form.postcode.errors %}
+                    {{ company_form.postcode.errors }}
+                {% endif %}
+
+                <li><label for="id_postcode" class="block">Postcode (Optional):</label>{{ company_form.postcode }}</li>
+
+
+                {% if company_form.country.errors %}
+                    {{ company_form.country.errors }}
+                {% endif %}
+
+                <li><label for="id_country" class="block">Country (Optional):</label>{{ company_form.country }}</li>
+            </ul>
+            <p><input type="submit" name="submit_action" value="Update Company" /></p>
+       </div>
+            </form>
+      </div></div>
+    </div>
+
+    <div class="yui-b">
+        <div id="left-menu">
+            {% get_side_list user perms %}
+        </div>
+    </div>
+{% endblock %}
+

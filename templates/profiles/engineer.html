@@ -1,0 +1,44 @@
+{% extends "base-internal.html" %}
+{% load host_extras %}
+{% load i18n %}
+
+{% block title %}HeloMX | Update My Profile{% endblock %}
+{% block to_head %}
+  <style>
+  #message { margin: 0px; width: 720px; height: 30px; text-align: center; vertical-align: 50%; padding-top: 10px; font-weight: bold; position: relative; }
+  </style>
+ {% endblock %}
+
+{% block to_footer %}
+    <link rel="Stylesheet" media="screen" href="https://www.helomx.com/css/themes/default/ui.all.css" />
+    {% include "ssi/highlightjs.html" %}
+{% endblock %}
+
+{% block content %}
+    <div id="yui-main">
+        <div class="yui-b">
+            <div class="yui-g">
+                {% if message %}
+                    <div id="message">{{ message }}</div>
+                {% endif %}
+                <div class="title">Update Engineer Profile</div>
+                <form action="/update/engineer/{{ slug }}/" method="post" name="addform">
+                    <div class="yui-u first">
+                        <ul class="modelform">{{ user_form }}</ul>
+                    </div>
+                    <div class="yui-u">
+                        <ul class="modelform">{{ engineer_form }}</ul>
+                        <p><input type="submit" name="submit_action" value="Update Engineer" /></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="yui-b">
+        <div id="left-menu">
+            {% get_side_list user perms %}
+        </div>
+    </div>
+{% endblock %}
+

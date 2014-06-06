@@ -1,0 +1,3 @@
+{% for motd in motd_list %}
+    <p><b>{{ motd.title }}</b>: {{ motd.content }} ({{ motd.publish_date }})</p><br />
+{% endfor %}

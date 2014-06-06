@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.46"
+   sodipodi:docname="introLeft.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape">
+  <defs
+     id="defs4">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient3237">
+      <stop
+         style="stop-color:#4d4d4d;stop-opacity:1;"
+         offset="0"
+         id="stop3239" />
+      <stop
+         style="stop-color:#4d4d4d;stop-opacity:0;"
+         offset="1"
+         id="stop3241" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient3217">
+      <stop
+         style="stop-color:#f3e4e0;stop-opacity:1;"
+         offset="0"
+         id="stop3219" />
+      <stop
+         style="stop-color:#f3e4e0;stop-opacity:0;"
+         offset="1"
+         id="stop3221" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient3201">
+      <stop
+         style="stop-color:#f9f9f9;stop-opacity:1;"
+         offset="0"
+         id="stop3203" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="1"
+         id="stop3205" />
+    </linearGradient>
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       id="perspective10" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3201"
+       id="linearGradient3207"
+       x1="288.7265"
+       y1="126.00937"
+       x2="207.86737"
+       y2="179.11464"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(25.720219,4.4949018)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3217"
+       id="linearGradient3223"
+       x1="272.52521"
+       y1="213.65411"
+       x2="272.52521"
+       y2="244.16393"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3237"
+       id="linearGradient3243"
+       x1="248.56696"
+       y1="252.87074"
+       x2="248.56696"
+       y2="238.45793"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3237"
+       id="linearGradient3253"
+       gradientUnits="userSpaceOnUse"
+       x1="248.56696"
+       y1="252.87074"
+       x2="248.56696"
+       y2="238.45793"
+       gradientTransform="translate(10.18368,299.63995)" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     gridtolerance="10000"
+     guidetolerance="10"
+     objecttolerance="10"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4142136"
+     inkscape:cx="349.33483"
+     inkscape:cy="875.78742"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1680"
+     inkscape:window-height="975"
+     inkscape:window-x="0"
+     inkscape:window-y="25" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="219.12643"
+       y="281.4866"
+       id="text3209"><tspan
+         sodipodi:role="line"
+         id="tspan3211"
+         x="219.12643"
+         y="281.4866"
+         style="font-weight:bold;-inkscape-font-specification:Bitstream Vera Sans Bold" /></text>
+    <rect
+       style="opacity:1;fill:#333333;fill-opacity:1;stroke:none;stroke-width:2.07186508;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect3245"
+       width="550.30212"
+       height="271.65079"
+       x="26.980906"
+       y="123.53582"
+       rx="16.446226"
+       ry="18.024433"
+       inkscape:export-filename="/home/kelvinn/Desktop/introLeft.png"
+       inkscape:export-xdpi="92.640022"
+       inkscape:export-ydpi="92.640022" />
+    <text
+       id="text3233"
+       y="551.95074"
+       x="72.255135"
+       style="font-size:37.09603882px;font-style:normal;font-weight:normal;fill:url(#linearGradient3253);fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       xml:space="preserve"><tspan
+         style="font-weight:bold;fill:url(#linearGradient3253);fill-opacity:1;-inkscape-font-specification:Bitstream Vera Sans Bold"
+         y="551.95074"
+         x="72.255135"
+         id="tspan3235"
+         sodipodi:role="line">HeloMX Limited Trial</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:21.22884178px;font-style:normal;font-weight:bold;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans Bold"
+       x="364.05511"
+       y="369.03146"
+       id="text3338"
+       inkscape:export-filename="/home/kelvinn/Desktop/introLeft.png"
+       inkscape:export-xdpi="92.640022"
+       inkscape:export-ydpi="92.640022"><tspan
+         sodipodi:role="line"
+         x="364.05511"
+         y="369.03146"
+         style="font-size:17.69070244px;fill:#ffffff"
+         id="tspan3340">100% Grade-A Beta</tspan></text>
+    <path
+       sodipodi:type="star"
+       style="opacity:1;fill:#96513c;fill-opacity:1;stroke:none;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path3384"
+       sodipodi:sides="8"
+       sodipodi:cx="144.24979"
+       sodipodi:cy="253.33151"
+       sodipodi:r1="21.505814"
+       sodipodi:r2="6.4517441"
+       sodipodi:arg1="0.52359878"
+       sodipodi:arg2="0.91629786"
+       inkscape:flatsided="false"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       d="M 162.87437,264.08442 L 148.17736,258.45003 L 149.8159,274.10453 L 143.40766,259.72806 L 133.49688,271.95609 L 139.13127,257.25909 L 123.47677,258.89763 L 137.85324,252.48939 L 125.62521,242.57861 L 140.32221,248.213 L 138.68367,232.55849 L 145.09191,246.93496 L 155.00269,234.70693 L 149.3683,249.40394 L 165.02281,247.7654 L 150.64633,254.17363 L 162.87437,264.08442 z"
+       transform="matrix(0.1712021,0.2965307,-0.2965307,0.1712021,409.63494,76.676496)"
+       inkscape:export-filename="/home/kelvinn/Desktop/introLeft.png"
+       inkscape:export-xdpi="92.640022"
+       inkscape:export-ydpi="92.640022" />
+    <text
+       xml:space="preserve"
+       style="font-size:50px;font-style:normal;font-weight:normal;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="57.982758"
+       y="191.10609"
+       id="text3386"
+       inkscape:export-filename="/home/kelvinn/Desktop/introLeft.png"
+       inkscape:export-xdpi="92.640022"
+       inkscape:export-ydpi="92.640022"><tspan
+         sodipodi:role="line"
+         x="57.982758"
+         y="191.10609"
+         style="font-size:40px;font-weight:bold;fill:#ffffff;-inkscape-font-specification:Bitstream Vera Sans Bold"
+         id="tspan3390">Coming Soon.</tspan></text>
+    <path
+       sodipodi:type="star"
+       style="opacity:1;fill:#96513c;fill-opacity:0.94117647;stroke:none;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path3394"
+       sodipodi:sides="8"
+       sodipodi:cx="144.24979"
+       sodipodi:cy="253.33151"
+       sodipodi:r1="21.505814"
+       sodipodi:r2="6.4517441"
+       sodipodi:arg1="0.52359878"
+       sodipodi:arg2="0.91629786"
+       inkscape:flatsided="false"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       d="M 162.87437,264.08442 L 148.17736,258.45003 L 149.8159,274.10453 L 143.40766,259.72806 L 133.49688,271.95609 L 139.13127,257.25909 L 123.47677,258.89763 L 137.85324,252.48939 L 125.62521,242.57861 L 140.32221,248.213 L 138.68367,232.55849 L 145.09191,246.93496 L 155.00269,234.70693 L 149.3683,249.40394 L 165.02281,247.7654 L 150.64633,254.17363 L 162.87437,264.08442 z"
+       transform="matrix(0.1712021,0.2965307,-0.2965307,0.1712021,403.27099,269.71663)"
+       inkscape:export-filename="/home/kelvinn/Desktop/introLeft.png"
+       inkscape:export-xdpi="92.640022"
+       inkscape:export-ydpi="92.640022" />
+  </g>
+</svg>

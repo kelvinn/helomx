@@ -1,0 +1,4 @@
+- Install Django / Apache / Postgres / mod_wsgi
+- Configure database
+- sudo apt-get install python-psycopg2 python-dnspython python-lxml python-setuptools python-dateutil
+- sudo easy_install pytz

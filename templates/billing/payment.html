@@ -1,0 +1,57 @@
+{% extends "base-internal.html" %} {% load host_extras %}
+{% load host_extras %}
+
+{% block to_head %}
+    <style type="text/css">
+    #message { margin: 0px; width: 720px; height: 30px; text-align: center; vertical-align: 50%; padding-top: 10px; font-weight: bold; position: relative; }
+    </style>
+{% endblock %}
+{% block to_footer %}
+    {% include "ssi/highlightjs.html" %}
+{% endblock %}
+
+{% block title %}HeloMX | Invoice Creator{% endblock %}
+{% block content %}
+
+<div id="yui-main">
+    <div class="yui-b">
+        <div class="yui-g">
+            {% if message %}
+                <div id="message">{{ message }}</div>
+            {% endif %}
+                <div class="title">Invoice Creator</div>
+                <table>
+
+                    <tr>
+                        <td class="colspacing">{{ ten_dolla_form.render }}</td><td><img src="https://www.helomx.com/img/10dolla.png" alt="10 Dollers" /></td>
+                    </tr>
+                    <tr>
+                        <td class="colspacing">{{ tf_dolla_form.render }}</td><td><img src="https://www.helomx.com/img/20dolla.png" alt="25 Dollers" /></td>
+                    </tr>
+                    <tr>
+                        <td class="colspacing">{{ f_dolla_form.render }}</td><td><img src="https://www.helomx.com/img/50dolla.png" alt="50 Dollers" /></td>
+                    </tr>
+                    <tr>
+                        <td class="colspacing">{{ oh_dolla_form.render }}</td><td><img src="https://www.helomx.com/img/100dolla.png" alt="100 Dollers" /></td>
+                    </tr>
+                    <tr>
+                        <td class="colspacing">{{ fh_dolla_form.render }}</td><td><img src="https://www.helomx.com/img/500dolla.png" alt="500 Dollers" /></td>
+                    </tr>
+                </table>
+                     
+            <br />
+            <img src="/img/paypal.gif" alt="We accept PayPal, Visa, and MV" />
+
+        </div>
+    </div>
+</div>
+
+<div class="yui-b">
+    <div id="left-menu">
+        {% get_side_list user perms %}
+    </div>
+</div>
+
+<br />
+{% endblock %}
+

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block to_head %}
+    <style type="text/css">
+        #message { margin: 0px; width: 100%; height: 30px; text-align: center; vertical-align: 50%; padding-top: 10px; font-weight: bold; position: relative; }
+    </style>
+{% endblock %}
+
+{% block to_footer %}
+    {% include "ssi/highlightjs.html" %}
+    <script type="text/javascript">
+     $(document).ready(function($){
+       $(".rounded").corner("round 5px");
+       $(".yui-g").corner();
+     });
+    </script>
+{% endblock %}
+
+{% block title %}HeloMX | Professional Mail Server Monitoring{% endblock %}
+
+{% block content %}
+    <div class="yui-g">
+        <div class="intro-space">
+            {{ flatpage.content }}
+        </div>
+
+
+    </div>
+
+
+{% endblock %}
+

@@ -1,0 +1,14 @@
+{% load host_extras %}
+{% if perms.profiles.change_company %}
+<div class="title">My Company</div>
+<ul>
+    <li class="item"><a href="/update/company/">Edit Company</a></li>
+    {% for item in engineer_list %}
+        <li class="item">{{ item.user.first_name }} {{ item.user.last_name }}{% ifnotequal company.primary_contact item.user %}<a href="/delete/engineer/{{ item.user.username }}/"><img src="https://www.helomx.com/img/delete.png" alt="Delete" class="icon" /></a><a href="/update/engineer/{{ item.user.username }}/"><img src="https://www.helomx.com/img/config.png" alt="Update" class="icon" /></a>{% endifnotequal %}</li>
+    {% endfor %}
+    <li class="item"><a href="/add/engineer/">Add Engineer</a></li>
+
+</ul><br />
+
+{% endif %}
+

@@ -1,0 +1,4 @@
+- Add AJAX lookup of domain name to add mailserver
+- Add RBL update ability under mailserver update
+- Make IP address not optional under update mailserver
+- Get forget password to work
